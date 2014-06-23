@@ -1,0 +1,10 @@
+<h2>Garden at home:</h2>
+<%= form_for([@gardener.group, @gardener]) do |g| %>
+    <p>
+
+
+          <%= g.label :garden_at_home %> <br>
+          <%= g.text_field :garden_at_home %>
+          </p>
+
+          <%= g.submit, "continue" %>

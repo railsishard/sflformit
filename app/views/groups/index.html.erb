@@ -1,0 +1,26 @@
+<div class="panel panel-default">
+<strong>Lising all groups </strong>
+</p>
+<table class="table">
+  <thead>
+  <tr>
+    <th> Group Name </th>
+    <th> Area </th>
+  </tr>
+  </thead>
+  <tbody>
+    <% @groups.each do |group| %>
+      <tr>
+        <td><%= image_tag group.avatar(:thumb), :class => "img-circle" %></td>
+        <td><%= group.name %></td> 
+        <td><%= group.area %></td>
+        <td><%= link_to 'Show', group_path(group), class: "btn btn-lg btn-success" %></td>
+        <td><%= link_to 'Edit', edit_group_path(group), class: "btn btn-lg btn-warning" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+<br>
+
+<%= link_to 'New Group', new_group_path, class: "btn btn-lg btn-primary" %>

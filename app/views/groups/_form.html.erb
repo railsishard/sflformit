@@ -1,0 +1,30 @@
+<%= form_for :group, url: groups_path do |f| %>
+  <% if @group.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@group.errors.count, "error") %> prohibited this group from being saved:</h2>
+
+      <ul>
+      <% @group.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+    <p>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </p>
+    <p>
+      <%= f.label :area %>
+      <%= f.text_field :area %>
+    </p>
+
+    <p>
+    <%= f.label :avatar, "please take a picture of the group" %>
+    <%= f.file_field :avatar %>
+    </p>
+
+<div class="form-actions">
+       <%= f.submit 'continue', :class =>  'btn btn-lg btn-success' %>
+<% end %>
+</div>

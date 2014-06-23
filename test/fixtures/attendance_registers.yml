@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  gardener: 
+  session: 
+  attended: false
+
+two:
+  gardener: 
+  session: 
+  attended: false
