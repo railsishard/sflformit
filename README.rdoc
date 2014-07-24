@@ -23,6 +23,7 @@ Things you may want to cover:
 
 * ...
 
+[ ![Codeship Status for railsishard/sflformit](https://www.codeship.io/projects/a5836970-f567-0131-7f42-6ac409f91479/status)](https://www.codeship.io/projects/28297)
 
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.
