@@ -7,4 +7,5 @@ class Group < ActiveRecord::Base
   has_attached_file :resume
   accepts_nested_attributes_for :gardeners
   has_many :attendance_registers
+  belongs_to :trainer
 end

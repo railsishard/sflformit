@@ -6,6 +6,7 @@ class Gardener < ActiveRecord::Base
   has_attached_file :resume
   has_many :attendance_registers_training_sessions
   has_many :attendance_registers, through: :attendance_registers_training_sessions
+  has_many :support_visits
   #mount_uploader :image, ImageUploader
 
   def active?

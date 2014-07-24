@@ -1,10 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html manifest="/application.manifest">
 <head>
   <title>Sflformit</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+   <%= stylesheet_link_tag 'mobile' if mobile_device? %>
   <%= csrf_meta_tags %>
+    <p class="notice"><%= notice %></p>
+       <p class="alert"><%= alert %></p>
 </head>
 <body>
 <div class="navbar">
@@ -13,12 +16,28 @@
 			<a href="#" class="brand"> Soil For Life </a>
 			<ul class="nav">
 			<li><%= link_to 'View Groups', groups_path %>
+			<div id="trainer_nav">
+			<% if trainer_signed_in? %>
+			Logged in as <strong><%= current_trainer.email%></strong>
+			<%= link_to 'Edit profile', edit_trainer_registration_path %> |
+			<%= link_to "logout", destroy_trainer_session_path, method: :delete %>
+			<% else %>
+			<%= link_to "Sign Up", new_trainer_registration_path %> |
+			<%= link_to "login", new_trainer_session_path %>
+			<% end %>
+			<% if mobile_device? %>
+			<%= link_to "Full Site", :mobile => 0 %>
+			<% else %>
+			<%= link_to "Mobile Site", :mobile => 1 %>
+			<% end %>
 			</div>
 		</div>
 	</div>
 
+	<% flash.each do |name, msg| %>
+	<%= content_tag :div, msg, id: "flash_#{name}" %>
+	<% end %>
 
-	<div class="container">
 <%= yield %>
 </div>
 

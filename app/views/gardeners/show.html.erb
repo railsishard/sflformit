@@ -22,6 +22,7 @@
 
         <td><%= link_to 'Edit', edit_group_gardener_path(@gardener.group, @gardener), class: "btn btn-lg btn-success" %></td>
         <td><%= link_to 'Begin Initial Questionnaire', new_group_gardener_build_path(@gardener.group, @gardener), class: "btn btn-lg btn-info" %></td>
+        <td><%= link_to 'Begin Support Visit', new_group_gardener_support_visit_path(@gardener.group, @gardener), class: "btn btn-lg btn-info" %></td>
       </tr>
   </tbody>
 </table>

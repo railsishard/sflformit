@@ -1,11 +1,12 @@
 class GroupsController < ApplicationController
+  before_filter :authenticate_trainer!
 #  before_action :set_group, only: [:show, :edit, :update, :destroy]
 
 
   # GET /groups
   # GET /groups.json
   def index
-    @groups = Group.all
+    @groups = current_trainer.groups
   end
 
   # GET /groups/1
@@ -21,7 +22,7 @@ class GroupsController < ApplicationController
 
   # GET /groups/new
   def new
-    @group = Group.new
+    @group = current_trainer.groups.build
   end
 
   # GET /groups/1/edit
@@ -76,7 +77,7 @@ class GroupsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def group_params
-      params.require(:group).permit(:name, :area, :avatar, :resume)
+      params.require(:group).permit(:name, :area, :avatar, :resume, :trainer_id)
     end
 
 end

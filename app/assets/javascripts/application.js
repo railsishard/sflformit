@@ -15,3 +15,8 @@
 //= require twitter/bootstrap
 //= require turbolinks
 //= require_tree .
+$(function() {
+	$(window.applicationCache).bind("error", function(){
+		alert("there was an error when loading the cache manifest.");
+	});
+});

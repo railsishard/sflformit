@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140623141140) do
+ActiveRecord::Schema.define(version: 20140715120502) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,7 +59,7 @@ ActiveRecord::Schema.define(version: 20140623141140) do
     t.integer  "group_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "id_number"
+    t.integer  "id_number",                            limit: 8
     t.string   "state"
     t.string   "status"
     t.boolean  "garden_at_home"
@@ -123,6 +123,7 @@ ActiveRecord::Schema.define(version: 20140623141140) do
     t.string   "resume_content_type"
     t.integer  "resume_file_size"
     t.datetime "resume_updated_at"
+    t.integer  "trainer_id"
   end
 
   create_table "identity_documents", force: true do |t|
@@ -139,6 +140,26 @@ ActiveRecord::Schema.define(version: 20140623141140) do
     t.datetime "garden_picture_updated_at"
   end
 
+  create_table "trainers", force: true do |t|
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "username"
+    t.string   "role"
+  end
+
+  add_index "trainers", ["email"], name: "index_trainers_on_email", unique: true, using: :btree
+  add_index "trainers", ["reset_password_token"], name: "index_trainers_on_reset_password_token", unique: true, using: :btree
+
   create_table "training_sessions", force: true do |t|
     t.integer  "attendance_registers_id"
     t.string   "name"
@@ -146,5 +167,16 @@ ActiveRecord::Schema.define(version: 20140623141140) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "users", force: true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "username"
+    t.string   "password_digest"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "users", ["username"], name: "index_users_on_username", using: :btree
 
 end
